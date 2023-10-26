@@ -1,0 +1,39 @@
+
+<script>
+  // 일급
+  const a = 10;
+  const add10 = a => a +10; // 함수를 변수에 담는다. 일급은 함수의 변수로 출력값으로 쓰인다.
+  const r = add10(a); // 20
+</script>
+
+<script>
+  // 일급 함수
+  const add5 = a => a +5;
+  add5(5) // 5
+
+  const f1 = () => () => 1; // 함수의 출력값으로 함수를 출력
+  log(f1()); // () => 1
+</script>
+
+<script>
+  // 고차 함수
+  const apply1 = f => f(1); // f, 함수와 인자를 입력받아서 함수(인자)로 실행하는 함수
+  const add2 = a => a+2;
+  log(apply1(add2)); // print 3
+  log(apply1(a => a -3)) // print -2
+
+  const times = (f,n) => {
+    let i = -1;
+    while (++i < n) f(i);
+  };
+
+  times(log, 3); // print 1, print 2, print 3
+  times(a => log(a*10), 3) // print 10, print 20, print 30
+</script>
+
+<script>
+  const addMaker = a => b => a + b; // 클로저를 만들어 리턴하는 함수, 클로저란 내부 함수가 외부의 변수를 기억하고 있다.
+  const add20 = addMaker(20);
+  log(add20(5)); // print 25
+  log(add20(10)); // print 30
+</script>
