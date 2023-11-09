@@ -37,19 +37,16 @@ const reduce = curry((f, acc, iter) => {
   return acc;
 });
 
-// curry로 go함수 개선해보기
-
-const go = (...args) => reduce((a, f) => f(a), args);
-
-
 const add = (a,b) => a+b;
+
+// curry로 go함수 개선해보기
+const go = (...args) => reduce((a, f) => f(a), args);
+const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
 
 const mult = curry((a,b) => a * b);
 
 
 log("----------")
-
-const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
 
 
 
